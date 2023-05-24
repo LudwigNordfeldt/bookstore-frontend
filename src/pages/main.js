@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Shelf from "../components/shelf";
 import BookService from "../services/books";
+import CategoriesMini from "../components/categoriesMini";
 
 const Main = () => {
   const [popular, setPopular] = useState(null);
@@ -9,6 +10,7 @@ const Main = () => {
   const [history, setHistory] = useState(null);
   const [fantasy, setFantasy] = useState(null);
 
+  //get 5 books from each query
   useEffect(() => {
     const getBooks = async () => {
       let newBooks = await BookService.getBooks("/trending/daily", {
@@ -16,72 +18,73 @@ const Main = () => {
       });
       setPopular(newBooks.works);
 
-      let newBooks2 = await BookService.getBooks("/search", {
+      let newBooks2 = await BookService.getBooks("/subjects/science_fiction", {
         limit: 5,
-        subject: "Science fiction",
       });
-      setScienceFic(newBooks2.docs);
+      setScienceFic(newBooks2.works);
 
-      let newBooks3 = await BookService.getBooks("/search", {
+      let newBooks3 = await BookService.getBooks("/subjects/fiction", {
         limit: 5,
-        subject: "Fiction",
       });
-      setFic(newBooks3.docs);
+      setFic(newBooks3.works);
 
-      let newBooks4 = await BookService.getBooks("/search", {
+      let newBooks4 = await BookService.getBooks("/subjects/history", {
         limit: 5,
-        subject: "History",
       });
-      setHistory(newBooks4.docs);
+      setHistory(newBooks4.works);
 
-      let newBooks5 = await BookService.getBooks("/search", {
+      let newBooks5 = await BookService.getBooks("/subjects/fantasy", {
         limit: 5,
-        subject: "Fantasy",
       });
-      setFantasy(newBooks5.docs);
+      setFantasy(newBooks5.works);
     };
 
     getBooks();
   }, []);
 
+  // display 5 shelves 5 covers each or "loading" while they load
   return (
     <div>
-      <div>
-        <h2>Popular</h2>
-        {popular ? <Shelf books={popular} debug="pop"></Shelf> : <p>Loading</p>}
+      <div className="main">
+        {console.log("POPULAR:", popular)}
+        {popular ? (
+          <Shelf books={popular} genre='Popular' rows={1}></Shelf>
+        ) : (
+          <p>Loading</p>
+        )}
       </div>
 
-      <div>
-        <h2>Sci-Fi</h2>
+      <div className="main">
+      {console.log("SCI-FI:", scienceFic)}
         {scienceFic ? (
-          <Shelf books={scienceFic} debug="scifi"></Shelf>
+          <Shelf books={scienceFic} genre="Science fiction" rows={1}></Shelf>
         ) : (
           <p>Loading</p>
         )}
       </div>
 
-      <div>
-        <h2>Fiction</h2>{" "}
-        {Fic ? <Shelf books={Fic} debug="fic"></Shelf> : <p>Loading</p>}
+      <div className="main">
+        {console.log("FIC:", Fic)}
+        {Fic ? <Shelf books={Fic} genre="Fiction" rows={1}></Shelf> : <p>Loading</p>}
       </div>
 
-      <div>
-        <h2>History</h2>
+      <div className="main">
         {history ? (
-          <Shelf books={history} debug="history"></Shelf>
+          <Shelf books={history} genre="History" rows={1}></Shelf>
         ) : (
           <p>Loading</p>
         )}
       </div>
 
-      <div>
-        <h2>Fantasy</h2>
+      <div className="main">
         {fantasy ? (
-          <Shelf books={fantasy} debug="fantasy"></Shelf>
+          <Shelf books={fantasy} genre="Fantasy" rows={1}></Shelf>
         ) : (
           <p>Loading</p>
         )}
       </div>
+
+      <CategoriesMini></CategoriesMini>
     </div>
   );
 };
