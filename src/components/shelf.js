@@ -7,10 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 
 const Shelf = (props) => {
+  const style = {
+    height: (props.rows*10).toString().concat('%')
+  }
   return (
     <ImageList
       className="shelf"
-      sx={{ width: 1200, height: props.rows * 500 }}
+      sx={style}
       cols={5}
     >
       {console.log("BOOKS ARE:", props.books)}

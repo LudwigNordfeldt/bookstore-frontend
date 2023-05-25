@@ -1,6 +1,7 @@
 .shelf {
-    justify-self: center;
+    float: left;
     padding: 50pt;
+    width: 100%;
 }
 
 .cover {
@@ -16,4 +17,8 @@
 
 .main {
     float: left;
+}
+
+.login {
+    float: right;
 }

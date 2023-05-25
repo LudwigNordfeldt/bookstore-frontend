@@ -49,7 +49,7 @@ const App = () => {
               </Typography>
             </Link>
 
-            <Button color="inherit" sx={{left: 1400}}>Login</Button>
+            <Button color="inherit" className='login'>Login</Button>
           </Toolbar>
         </AppBar>
       </Box>
