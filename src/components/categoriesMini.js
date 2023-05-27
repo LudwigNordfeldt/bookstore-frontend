@@ -8,32 +8,25 @@ import BookmarksIcon from '@mui/icons-material/Bookmarks';
 import ListItemText from '@mui/material/ListItemText';
 import { ListItemIcon } from '@mui/material';
 
-
 export const beautify = (string) => {
     return string[0].toUpperCase().concat(string.slice(1).replaceAll('_', ' '))
 }
 
-const CategoriesMini = () => {
-    const categories = ["architecture", "music", "fantasy", "humor", "mystery_and_detective_stories",
-     "science_fiction", "biology", "chemistry", "mathematics", "physics", "programming",
-    "management", "finance", "history"]
-
-    return(
-        <Box className="cat">
+const CategoriesMini = (props) => (
+        <Box>
             <List>
-                {categories.map(el => (
-                    <ListItem sx={{height:'2%'}}>
-                        <ListItemButton component={Link} to={`/categories/${el}`}>
+                {props.categories.map((item, index) => (
+                    <ListItem sx={{height:'5vh'}} key={index}>
+                        <ListItemButton sx={{height:'5vh'}} component={Link} to={`/categories/${item.link}`}>
                             <ListItemIcon>
                                 <BookmarksIcon/>
                             </ListItemIcon>
-                            <ListItemText primary={beautify(el)}></ListItemText>
+                            <ListItemText primary={item.label}></ListItemText>
                         </ListItemButton>
                     </ListItem>
                 ))}
             </List>
         </Box>
-    )
-}
+)
 
 export default CategoriesMini

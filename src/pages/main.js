@@ -3,6 +3,26 @@ import Shelf from "../components/shelf";
 import BookService from "../services/books";
 import CategoriesMini from "../components/categoriesMini";
 
+const categories = [{label: 'Architecture', link: 'architecture'},
+    {label: 'Music', link: 'music'},
+    {label: 'Fantasy', link: 'fantasy'},
+    {label: 'Humor', link: 'humor'},
+    {label: 'Horror', link: 'horror'},
+    {label: 'Mystery/Detectives', link: 'mystery_and_detective_stories'},
+    {label: 'Romance', link: 'romance'},
+    {label: 'Short Stories', link: 'short_stories'},
+    {label: 'Sci-Fi', link: 'science_fiction'},
+    {label: 'Biology', link: 'biology'},
+    {label: 'Chemistry', link: 'chemistry'},
+    {label: 'Mathematics', link: 'mathematics'},
+    {label: 'Physics', link: 'physics'},
+    {label: 'Programming', link: 'programming'},
+    {label: 'Management', link: 'management'}, 
+    {label: 'Finance', link: 'finance'},
+    {label: 'History', link: 'history'},
+]
+
+
 const Main = () => {
   const [popular, setPopular] = useState(null);
   const [scienceFic, setScienceFic] = useState(null);
@@ -48,31 +68,31 @@ const Main = () => {
       <div className="main">
         {console.log("POPULAR:", popular)}
         {popular ? (
-          <Shelf books={popular} genre='Popular' rows={1}></Shelf>
+          <Shelf books={popular} genre="Popular" rows={1}></Shelf>
         ) : (
-          <p>Loading</p>
+          <p></p>
         )}
       </div>
 
       <div className="main">
-      {console.log("SCI-FI:", scienceFic)}
+        {console.log("SCI-FI:", scienceFic)}
         {scienceFic ? (
           <Shelf books={scienceFic} genre="Science fiction" rows={1}></Shelf>
         ) : (
-          <p>Loading</p>
+          <p></p>
         )}
       </div>
 
       <div className="main">
         {console.log("FIC:", Fic)}
-        {Fic ? <Shelf books={Fic} genre="Fiction" rows={1}></Shelf> : <p>Loading</p>}
+        {Fic ? <Shelf books={Fic} genre="Fiction" rows={1}></Shelf> : <p></p>}
       </div>
 
       <div className="main">
         {history ? (
           <Shelf books={history} genre="History" rows={1}></Shelf>
         ) : (
-          <p>Loading</p>
+          <p></p>
         )}
       </div>
 
@@ -80,11 +100,13 @@ const Main = () => {
         {fantasy ? (
           <Shelf books={fantasy} genre="Fantasy" rows={1}></Shelf>
         ) : (
-          <p>Loading</p>
+          <p></p>
         )}
       </div>
 
-      <CategoriesMini></CategoriesMini>
+      <div className="sidenav">
+        <CategoriesMini categories={categories}></CategoriesMini>
+      </div>
     </div>
   );
 };

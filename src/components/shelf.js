@@ -16,16 +16,19 @@ const Shelf = (props) => {
       sx={style}
       cols={5}
     >
+      <ImageListItem cols={5}>
+        <ListSubheader component="div"><h2>{props.genre}</h2></ListSubheader>
+      </ImageListItem>
       {console.log("BOOKS ARE:", props.books)}
       {console.log("GENRE:", props.genre)}
       {props.books.map((item) => (
-        <ImageListItem key={item.key}>
-          <ListSubheader component="div">{props.genre}</ListSubheader>
+        <ImageListItem key={item.key} component="div" sx={{display: 'flex', alignContent: 'center'}}>
           <a href={`https://openlibrary.org${item.key}`}>
             <img
               src={`https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-M.jpg`}
               alt=""
               loading="lazy"
+              style={{alignSelf: 'center'}}
             />
           </a>
           <ImageListItemBar

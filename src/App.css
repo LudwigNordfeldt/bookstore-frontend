@@ -1,7 +1,7 @@
 .shelf {
     float: left;
-    padding: 50pt;
-    width: 100%;
+    padding: 40pt;
+    width: 75vw;
 }
 
 .cover {
@@ -9,8 +9,9 @@
     margin: 20pt;
 }
 
-.cat {
+.sidenav {
     right: 0;
+    width: 20vw;
     float: right;
     position: fixed;
 }
