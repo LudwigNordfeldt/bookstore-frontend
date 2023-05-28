@@ -66,7 +66,6 @@ const Main = () => {
   return (
     <div>
       <div className="main">
-        {console.log("POPULAR:", popular)}
         {popular ? (
           <Shelf books={popular} genre="Popular" rows={1}></Shelf>
         ) : (
@@ -75,7 +74,6 @@ const Main = () => {
       </div>
 
       <div className="main">
-        {console.log("SCI-FI:", scienceFic)}
         {scienceFic ? (
           <Shelf books={scienceFic} genre="Science fiction" rows={1}></Shelf>
         ) : (
@@ -84,7 +82,6 @@ const Main = () => {
       </div>
 
       <div className="main">
-        {console.log("FIC:", Fic)}
         {Fic ? <Shelf books={Fic} genre="Fiction" rows={1}></Shelf> : <p></p>}
       </div>
 

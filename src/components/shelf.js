@@ -1,4 +1,4 @@
-//import Book from "./book";
+import { Link } from "react-router-dom";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
@@ -8,7 +8,7 @@ import InfoIcon from "@mui/icons-material/Info";
 
 const Shelf = (props) => {
   const style = {
-    height: (props.rows*10).toString().concat('%')
+    height: (props.rows*15).toString().concat('%')
   }
   return (
     <ImageList
@@ -19,18 +19,16 @@ const Shelf = (props) => {
       <ImageListItem cols={5}>
         <ListSubheader component="div"><h2>{props.genre}</h2></ListSubheader>
       </ImageListItem>
-      {console.log("BOOKS ARE:", props.books)}
-      {console.log("GENRE:", props.genre)}
       {props.books.map((item) => (
         <ImageListItem key={item.key} component="div" sx={{display: 'flex', alignContent: 'center'}}>
-          <a href={`https://openlibrary.org${item.key}`}>
+          <Link to={`/book${item.key}`}>
             <img
               src={`https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-M.jpg`}
               alt=""
               loading="lazy"
               style={{alignSelf: 'center'}}
             />
-          </a>
+          </Link>
           <ImageListItemBar
             title={item.title}
             subtitle={

@@ -6,6 +6,7 @@ import Main from "./pages/main";
 import Categories from "./pages/categories";
 import AllCategories from "./pages/allCategories";
 import Search from "./pages/search";
+import BookPage from "./pages/bookPage";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -57,6 +58,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/search" element={<Search />}></Route>
+        <Route path="/book/:w/:key" element={<BookPage />}></Route>
         <Route path="/categories" element={<AllCategories />}></Route>
         <Route path="/categories/:cat" element={<Categories />}></Route>
       </Routes>
