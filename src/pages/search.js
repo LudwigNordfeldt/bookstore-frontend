@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import Shelf from "../components/shelf";
 import { categories } from "./allCategories";
 import BookService from "../services/books";
 
-import { Autocomplete, Select, TextField, MenuItem } from "@mui/material";
+import { Autocomplete, TextField} from "@mui/material";
 
 const Search = () => {
   const [name, setName] = useState("");

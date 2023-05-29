@@ -21,5 +21,9 @@
 }
 
 .login {
-    float: right;
+    left: 75vw;
+}
+
+.signup {
+    left: 60vw;
 }
